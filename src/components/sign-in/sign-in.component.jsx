@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import "./signin.styles.scss"
+import "./signin.styles.scss";
 
-import FormInput from "../form-input/form-input.component"
-import CustomButton from '../custom-button/custom-button.componenet';
+import FormInput from "../form-input/form-input.component";
+import CustomButton from "../custom-button/custom-button.componenet";
 
-import { signInWithGoogle } from "../../firebase/firebase.utils"
+import { signInWithGoogle } from "../../firebase/firebase.utils";
 
 class Signin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: ''
-    }
+      email: "",
+      password: ""
+    };
   }
 
   handleSubmit = event => {
-    event.preventDefault()
+    event.preventDefault();
 
-    this.setState({ email: '', password: '' })
-  }
+    this.setState({ email: "", password: "" });
+  };
 
   handleChange = event => {
     const { value, name } = event.target;
@@ -36,20 +36,20 @@ class Signin extends Component {
 
         <form onSubmit={this.handleSubmit}>
           <FormInput
-            name='email'
-            type='email'
+            name="email"
+            type="email"
             handleChange={this.handleChange}
             value={this.state.email}
-            label='email'
+            label="email"
             required
           />
 
           <FormInput
-            name='password'
-            type='password'
+            name="password"
+            type="password"
             value={this.state.password}
             handleChange={this.handleChange}
-            label='password'
+            label="password"
             required
           />
           <div className="buttons">
