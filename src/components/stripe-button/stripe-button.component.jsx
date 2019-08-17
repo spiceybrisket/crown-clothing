@@ -16,7 +16,6 @@ const StripeButton = ({ price }) => {
       name="Crown Clothing"
       billingAddress
       shippingAddress
-      locale="NZ"
       image="http://svgshare.com/i/CUz.svg"
       description={`Your total is ${price}`}
       amount={priceForStripe}
