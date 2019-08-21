@@ -8,7 +8,7 @@ const config = {
   authDomain: "crwn-db-14082.firebaseapp.com",
   databaseURL: "https://crwn-db-14082.firebaseio.com",
   projectId: "crwn-db-14082",
-  storageBucket: "",
+  storageBucket: "crwn-db-14082.appspot.com",
   messagingSenderId: "756417892877",
   appId: "1:756417892877:web:cd640085f6e12ea6"
 };
@@ -73,11 +73,20 @@ export const convertCollectionsSnapshotToMap = collections => {
   }, {});
 };
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
